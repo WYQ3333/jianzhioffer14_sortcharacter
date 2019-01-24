@@ -4,7 +4,7 @@
 #include<algorithm>
 using namespace std;
 
-class Solution {
+class Solution1 {
 public:
 	vector<string> result;
 	vector<string> Permutation(string str) {
@@ -33,13 +33,13 @@ public:
 };
 
 void TestFunc(){
-	Solution S;
-	vector<string> s;
+	Solution1 S1;
+	vector<string> s1;
 	string str("abc");
-	s = S.Permutation(str);
+	s1 = S1.Permutation(str);
 	int i = 0;
-	for (i = 0; i < s.size(); ++i){
-		cout << s[i]<<" "<<endl;
+	for (i = 0; i < s1.size(); ++i){
+		cout << s1[i]<<" "<<endl;
 	}
 }
 
