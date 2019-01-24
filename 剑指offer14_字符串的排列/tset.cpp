@@ -37,6 +37,10 @@ void TestFunc(){
 	vector<string> s;
 	string str("abc");
 	s = S.Permutation(str);
+	int i = 0;
+	for (i = 0; i < s.size(); ++i){
+		cout << s[i]<<" "<<endl;
+	}
 }
 
 
