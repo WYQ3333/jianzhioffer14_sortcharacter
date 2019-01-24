@@ -1,31 +1,44 @@
 #include<iostream>
-
 #include<vector>
-
-using std::string;
-using std::vector;
-using std::cin;
-using std::cout;
-using std::endl;
-
-
-//输入一个字符串, 按字典序打印出该字符串中字符的所有排列。例如输入字符串abc,
-//则打印出由字符a, b, c所能排列出来的所有字符串abc, acb, bac, bca, cab和cba。
-//输入描述:
-//输入一个字符串, 长度不超过9(可能有字符重复), 字符只包括大小写字母
+#include<string>
+#include<algorithm>
+using namespace std;
 
 class Solution {
 public:
-
+	vector<string> result;
 	vector<string> Permutation(string str) {
-		vector<string> S;
-		return S;
+		if (str.length() == 0){
+			return result;
+		}
+		Permutation1(str, 0);
+		sort(result.begin(), result.end());
+		return result;
+	}
+	void Permutation1(string str, int begin){
+		if (begin == str.length()){
+			result.push_back(str);
+			return;
+		}
+		for (int i = begin; str[i] != '\0'; i++){
+
+			if (i != begin&&str[begin] == str[i])
+				continue;
+			swap(str[begin], str[i]);
+			Permutation1(str, begin + 1);
+			swap(str[begin], str[i]);
+		}
+
 	}
 };
 
 void TestFunc(){
-
+	Solution S;
+	vector<string> s;
+	string str("abc");
+	s = S.Permutation(str);
 }
+
 
 int main(){
 	TestFunc();
