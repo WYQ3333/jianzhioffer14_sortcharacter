@@ -32,6 +32,32 @@ public:
 	}
 };
 
+
+class Solution {
+public:
+	vector<string> result;
+	void Permutation1(string str, int begin){
+		if (str.length() == begin){
+			result.push_back(str);
+			return;
+		}
+		for (int i = begin; str[i] != '\0'; ++i){
+			if (i != begin&&str[begin] == str[i])
+				continue;
+			swap(str[begin], str[i]);
+			Permutation1(str, begin + 1);
+			swap(str[begin], str[i]);
+		}
+	}
+	vector<string> Permutation(string str) {
+		if (str.empty()){
+			return result;
+		}
+		Permutation1(str, 0);
+	}
+
+};
+
 void TestFunc(){
 	Solution1 S1;
 	vector<string> s1;
@@ -42,10 +68,20 @@ void TestFunc(){
 		cout << s1[i]<<" "<<endl;
 	}
 }
+void TestFunc2(){
+	Solution S;
+	vector<string> s;
+	string str("abc");
+	s = S.Permutation(str);
+	int i = 0;
+	for (i = 0; i < s.size(); ++i){
+		cout << s[i] << " " << endl;
+	}
+}
 
 
 int main(){
-	TestFunc();
+	TestFunc2();
 	system("pause");
 	return 0;
 }
